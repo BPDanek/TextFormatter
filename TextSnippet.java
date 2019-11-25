@@ -1,3 +1,6 @@
+package formatterGui;
+
+
 public class TextSnippet {
    private char _justify; // l, r, c, e
    private int _lineLength; // >0 || <= 80
