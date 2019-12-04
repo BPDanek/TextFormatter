@@ -1,11 +1,6 @@
 package formatterGui;
 
-import java.io.*;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class Formatter {
    private static char _justify = 'l'; // l, r, c, e

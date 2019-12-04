@@ -1,6 +1,5 @@
 package formatterGui;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -10,15 +9,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.border.Border;
 import javax.swing.event.EventListenerList;
-import javax.swing.filechooser.*; 
 
 public class DetailsPanel extends JPanel {
-	
+
 	private EventListenerList listenerList = new EventListenerList();
 	
 	Border border = BorderFactory.createLineBorder(Color.WHITE);

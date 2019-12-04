@@ -1,21 +1,8 @@
 package formatterGui;
 
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
-//importing javax.swing: https://stackoverflow.com/questions/14181142/eclipse-doesnt-find-javax-swing
-//how to set up directory, see SOLVED at the end of initial post: https://www.eclipse.org/forums/index.php/t/369033/
-//Swing Tutorial Series: https://www.youtube.com/watch?v=jUEOWVjnIR8
-// XXX cannot be resolved: https://stackoverflow.com/questions/4322893/eclipse-error-the-import-xxx-cannot-be-resolved
 
 public class GUI {
 	
@@ -35,14 +22,13 @@ public class GUI {
 	
 			public void run() {
 				
-				String filePath = ""; //"/Users/denbanek/eclipse-workspace/FormattingTool/src/formatterGui/testfile3.txt"
+				String filePath = "";
 				
 				JFrame frame = new MainFrame("Formatter", filePath); // open a frame with a title in constructor
 				
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate program when window is closed
 				frame.pack();
 				
-//				frame.setPreferredSize(new Dimension(651, 500)); // set size
 				frame.setVisible(true); // show frame
 							
 			}

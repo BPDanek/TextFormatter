@@ -2,13 +2,11 @@ package formatterGui;
 
 
 import java.awt.BorderLayout; // abstract window toolkit
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -17,15 +15,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
@@ -53,23 +46,14 @@ public class MainFrame extends JFrame {
 	}
 
 	public String doFormat(String filePath) {
-		//System.out.println("calling parser");
 		ArrayList<TextSnippet> alist = new ArrayList<TextSnippet>();
 		
 		Parser aparser = new Parser();
 		  
 		//TextSnippet elements - justify, lineLength, wrapEnabled, doublespace, isTitle, indent, numColumns, blanks, false, text)
 		alist = aparser.ParseFile(filePath);
-		  
-		//for (int i = 0; i < alist.size(); i++) 
-		//{ 		              
-		//	System.out.println(alist.get(i).toString());
-		//	}	   
 		
 		String content = Formatter.getFormattedText(alist);
-		// System.out.println(content);
-		
-		//System.out.println("after parser call");
 		
 		return content;
 	}
@@ -83,18 +67,17 @@ public class MainFrame extends JFrame {
     }
 	
 	private static String open_selected() {
-		JFileChooser fileChooser = new JFileChooser("/Users/denbanek/eclipse-workspace/FormattingTool/src");
+		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-//				System.out.println("got it");
 			}
 		});
 		
 		int status = fileChooser.showOpenDialog(null);
-		String parent = "";
-		String name = "";
+		String parent = "blank";
+		String name = "blank";
 		if (status == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = fileChooser.getSelectedFile();
 			parent = selectedFile.getParent();
@@ -103,16 +86,18 @@ public class MainFrame extends JFrame {
 			System.out.println("Canceled");
 		}
 		
-		return (parent + "/" + name);
+		String returnString = (parent + "/" + name);
+		
+		if (parent == "blank" || name == "blank") {
+			returnString = "nonexistantdirectory";
+		}
+		
+		System.out.println(returnString);
+		return returnString;
 	}
 	
 	public MainFrame(String title, String path) {
 		super(title); // inherit constructor behavior
-		
-//		this.setPreferredSize(new Dimension(4000,300));
-		
-		//set layout manager
-//		setLayout(new BorderLayout());
 		
 		// make content frame
 		Container appVis = getContentPane();
@@ -137,39 +122,24 @@ public class MainFrame extends JFrame {
 					filePath = open_selected(); 
 					detailsPanel.writeContent(noFormat(filePath));
 					currentText = detailsPanel.getContent();
-					formatTextArea.append(currentText);
+					formatTextArea.setText(currentText);
 				}
 				else if (commandName == "save") {
 					filePath = open_selected();
-					writeToDir(currentText, filePath);
+					if (filePath != "nonexistantdirectory") {
+						writeToDir(currentText, filePath);
+					}
 				}
 				else if (commandName == "format") {
 					detailsPanel.writeContent(doFormat(filePath));
 					currentText = detailsPanel.getContent();
-					formatTextArea.append(currentText);
+					formatTextArea.setText(currentText);
 				}
 				
 			}
 		});
-		
-//		scroller = new JScrollPane(formatTextArea);
-		
-//		JScrollPane scrollPane = new JScrollPane(formatTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-//		scrollPane.setPreferredSize(new Dimension(15,100));
-//		scrollPane.setViewportBorder(
-//                BorderFactory.createLineBorder(Color.lightGray));
-		
-		
-		JScrollPane scrollPane = new JScrollPane(formatTextArea);
-		scrollPane.setVerticalScrollBarPolicy(
-                        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setPreferredSize(new Dimension(250, 250));
-		scrollPane.setBorder(
-            BorderFactory.createCompoundBorder(
-                BorderFactory.createCompoundBorder(
-                                BorderFactory.createTitledBorder("Plain Text"),
-                                BorderFactory.createEmptyBorder(5,5,5,5)),
-                scrollPane.getBorder()));
+			
+		JScrollPane scrollPane = new JScrollPane(formatTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
 		appVis.add(scrollPane, BorderLayout.CENTER);
 		
@@ -181,13 +151,10 @@ public class MainFrame extends JFrame {
 		formatTextArea.setAlignmentX(CENTER_ALIGNMENT);
 		formatTextArea.setEditable(false);
 		
-		appVis.add(scrollPane, BorderLayout.EAST);
-		appVis.add(formatTextArea, BorderLayout.CENTER);
+		appVis.add(scrollPane, BorderLayout.CENTER);
 		appVis.add(errorPanel, BorderLayout.SOUTH);
 		appVis.add(detailsPanel, BorderLayout.NORTH);
 		
-		
-		// add sample content to textArea
 		formatTextArea.append("");
 	}
 }

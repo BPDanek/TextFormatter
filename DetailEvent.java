@@ -1,7 +1,5 @@
 package formatterGui;
 
-import java.util.EventObject;
-
 public class DetailEvent extends java.util.EventObject {
 
 	private String name;
