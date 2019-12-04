@@ -1,13 +1,22 @@
+/*
+ * Author: Benjamin Danek
+ * Class ID: CSE 360, fall 2019
+ * Assignment: Formatter Tool, final project 
+ */
+
 package formatterGui;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+/*
+ * This class is the entry point of the program, it starts a runnable swing thread and calls the MainFrame, a class
+ * which handles the GUI operations. 
+ */
 
 public class GUI {
-	
-	
 		
+	// entry point of program
 	public static void main(String[] args) {
 		
 //		String content = "\n\tArtificial intelligence is often used as an umbrella term to \n"
@@ -18,6 +27,7 @@ public class GUI {
 //					+ "practical.";
 			
 		// Swing apps need their own threading, this is the way to do that
+		// this runnable thread entails the program operations
 		SwingUtilities.invokeLater(new Runnable() {
 	
 			public void run() {

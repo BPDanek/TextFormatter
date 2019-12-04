@@ -1,5 +1,10 @@
-package formatterGui;
+/*
+ * Author: Benjamin Danek
+ * Class ID: CSE 360, fall 2019
+ * Assignment: Formatter Tool, final project 
+ */
 
+package formatterGui;
 
 import java.awt.BorderLayout; // abstract window toolkit
 import java.awt.Color;
@@ -23,7 +28,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
-// the frame that will be the GUI for our app
+/*
+ * This class is a JFrame, and holds all of the fields that the user can interact with. It's DetialsPanel implements the 
+ * buttons that one can press, the ErrorPanel implements the error messenger, and the textField updates the user
+ * on the formatting progress. This function also includes event handling from the detailsPanel, as well as interaction
+ * with the users file system.
+ */
 public class MainFrame extends JFrame {
 	
 	public DetailsPanel detailsPanel;
@@ -32,6 +42,7 @@ public class MainFrame extends JFrame {
 	
 	public static String currentText = "";
 	
+	// returns the content of filePath as a string, without any formatting. Also prints errors in opening to console.
 	public String noFormat(String filePath) {
 		Path pathpath = Paths.get(filePath);
 		String content;
@@ -44,7 +55,8 @@ public class MainFrame extends JFrame {
 	    	return "";
 		}
 	}
-
+	
+	// returns formatted content of filePath. Uses formatting methods like TextSnippet, Parser.
 	public String doFormat(String filePath) {
 		ArrayList<TextSnippet> alist = new ArrayList<TextSnippet>();
 		
@@ -58,6 +70,7 @@ public class MainFrame extends JFrame {
 		return content;
 	}
 	
+	// writes contents of data to path.
 	private static void writeToDir(String data, String path) {
         try {
             Files.write(Paths.get(path), data.getBytes());
@@ -66,6 +79,8 @@ public class MainFrame extends JFrame {
         }
     }
 	
+	// opens the computer file system navigator and allows the user to select a file visually, returning its path.
+	// this method uses actionListeners, which handle events
 	private static String open_selected() {
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.addActionListener(new ActionListener() {
@@ -96,6 +111,9 @@ public class MainFrame extends JFrame {
 		return returnString;
 	}
 	
+	// constructor for the mainframe, the gui is put together here including DetailEvent handling, which
+	// specifically interacts with the detailsPanel. 
+	// this method controls the appearance and visualization completely.
 	public MainFrame(String title, String path) {
 		super(title); // inherit constructor behavior
 		

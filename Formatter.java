@@ -1,3 +1,8 @@
+/*
+ * Author: Rachel White, Team 24
+ * Class ID: CSE 360, fall 2019
+ * Assignment: Formatter Tool, final project 
+ */
 package formatterGui;
 
 import java.util.*;

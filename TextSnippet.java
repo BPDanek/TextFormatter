@@ -1,3 +1,15 @@
+/**
+ * 
+ * Rachel White, Team 24
+ * CSE360 85141 
+ * Team Project
+ * 
+ * This class defines a TextSnippet.
+ * 
+ * package formatterGui;
+ * @author Rachel White
+ */
+
 package formatterGui;
 
 public class TextSnippet {
@@ -13,6 +25,9 @@ public class TextSnippet {
    private String _text;
    private String _formattedText;
    
+   /*
+    * Class constructor.
+    */
    public TextSnippet(char justify, int lineLength, boolean wrapEnabled, boolean doublespace, boolean isTitle,
                          int indent, int numColumns, int numBlanks, boolean hasText, String text) {                     
       _justify = justify;
@@ -28,6 +43,9 @@ public class TextSnippet {
       _formattedText = "";
    }
    
+   /*
+    * toString() primarily for debug and testing purposes.
+    */
    public String toString() {
       
       return("Snippet is: Justify: " + _justify + " length: " + _lineLength + 

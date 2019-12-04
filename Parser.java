@@ -1,3 +1,15 @@
+/**
+ * Rachel White, Team 24
+ * CSE360 85141 
+ * Team Project
+ * 
+ * This parses a .txt file into an array of TextSnippets.
+ * 
+ * package formatterGui;
+ * @author Rachel White
+ */
+ */
+
 package formatterGui;
 
 import java.io.*;
@@ -21,9 +33,17 @@ public class Parser {
    
    ArrayList<TextSnippet> allText = new ArrayList<TextSnippet>();
 
+   /**
+    * 
+    */
    public Parser() {
    }
    
+   /**
+    * Opens a file stream for reading.
+    * @param fileName
+    * @return
+    */
    public ArrayList<TextSnippet> ParseFile(String fileName) {
       allText.clear();
       Scanner inputStream = null;
@@ -47,6 +67,11 @@ public class Parser {
       return allText;
    }
    
+   /**
+    * Removes newline characters from strings.
+    * @param line
+    * @return
+    */
    private String stripNewline(String line) {
       String strippedLine = line;
       if (line.endsWith("\r\n"))
@@ -56,6 +81,12 @@ public class Parser {
       return strippedLine;
    }
    
+   /**
+    * determines if the embedded command has a number as a parameter.
+    * @param line
+    * @param cin
+    * @return
+    */
    private boolean isCommandWithNumber(String line, String[] cin) {
       Matcher m = _commandNumberPattern.matcher(line);    
       if (m.matches()) {
@@ -69,6 +100,10 @@ public class Parser {
       }
    }
    
+   /**
+    * Generates a TextSnippet with metadata and text.
+    * @param line
+    */
    private void parseLine(String line) {
       boolean wasCommand = false;
       String trimLine = this.stripNewline(line);
