@@ -1,3 +1,8 @@
+/*
+ * Author: Benjamin Danek, Team 24
+ * Class ID: CSE 360, fall 2019
+ * Assignment: Formatter Tool, final project 
+ */
 package formatterGui;
 
 import java.awt.Color;
@@ -15,19 +20,23 @@ import javax.swing.border.Border;
 
 public class ErrorPanel extends JPanel {
 
+	//Setting the boarder to gray
 	Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
 
 	public ErrorPanel(int height) {
 		
+		//Setting the size of the panel
 		Dimension size = getPreferredSize();
 		size.height = height; //size in pixels, can be tuned
 		setPreferredSize(size);
 		
+		//Text Area of the Error panel
 		JTextArea errorTextArea = new JTextArea("Errors: ", 3, 10);
 		errorTextArea.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(1, 5, 5, 10)));
 		errorTextArea.setEditable(false);
 //		errorTextArea.setAlignmentX(CENTER_ALIGNMENT);
 		
+		//Setting layout to the grid
 		setLayout(new GridBagLayout());
 		
 		GridBagConstraints gbc = new GridBagConstraints();
