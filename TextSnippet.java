@@ -1,17 +1,17 @@
 package formatterGui;
 
-
 public class TextSnippet {
    private char _justify; // l, r, c, e
    private int _lineLength; // >0 || <= 80
    private boolean _wrapEnabled; // True = wrap on
    private boolean _doublespace; // False = single spaced
    private boolean _isTitle;
+   private boolean _hasText;
    private int _indent; // >= 0
    private int _numColumns; // 1 || 2
    private int _numBlanks; // >= 0
-   private boolean _hasText;
    private String _text;
+   private String _formattedText;
    
    public TextSnippet(char justify, int lineLength, boolean wrapEnabled, boolean doublespace, boolean isTitle,
                          int indent, int numColumns, int numBlanks, boolean hasText, String text) {                     
@@ -25,14 +25,15 @@ public class TextSnippet {
       _numBlanks = numBlanks;
       _hasText = hasText;
       _text = text;
+      _formattedText = "";
    }
    
    public String toString() {
       
       return("Snippet is: Justify: " + _justify + " length: " + _lineLength + 
-             " wrap: " + _wrapEnabled + " doublespace: " + _doublespace + "\n" +
-             " istitle"  + _isTitle +  " indent: " + _indent +  " numcolumns: " + _numColumns + 
-             " numblanks: " + _numBlanks + " hastext: " + _hasText + "\ntext: "  + _text);
+             " wrap: " + _wrapEnabled + " doublespace: " + _doublespace +
+             " istitle: "  + _isTitle +  " indent: " + _indent +  " numcolumns: " + _numColumns + 
+             " numblanks: " + _numBlanks + " hastext: " + _hasText + System.lineSeparator() + "text: "  + _text);
    }
    
    public char getJustify() {
@@ -73,5 +74,9 @@ public class TextSnippet {
 
    public String getText() {
       return _text;
+   }
+   
+   public String getFormattedText() {
+      return _formattedText;
    }
 }

@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-
 public class Parser {
    private static final Pattern _commandNumberPattern = Pattern.compile("(^-[abnp])(\\d+$)");
 
@@ -29,14 +28,16 @@ public class Parser {
    public ArrayList<TextSnippet> ParseFile(String fileName) {
       allText.clear();
       Scanner inputStream = null;
-      try
-      {
-         inputStream = new Scanner(new File(fileName));
-      }
-      catch(FileNotFoundException e)
-      {
-         System.out.println("Error opening the file " + fileName);
-         return allText;
+      
+      try {
+    	  
+    	  inputStream = new Scanner(new File(fileName));
+      
+      } catch (FileNotFoundException e) {
+    	  
+    	  System.out.println("Error opening the file " + fileName);
+    	  return allText;
+    	  
       }
       
       while (inputStream.hasNextLine())
@@ -144,7 +145,8 @@ public class Parser {
                                           blanks, true, line);
          allText.add(newSnippet);
          //reset temporary flags back to defaults
-         isTitle = false;      
+         isTitle = false;
+         indent = 0;      
       }
    }
 }

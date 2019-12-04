@@ -1,0 +1,41 @@
+-c
+-t
+Stacks and queues
+-b2
+-l
+-d
+Stacks and queues are dynamic sets in which the element removed from the set
+by the DELETE operation is prespecified. In a stack, the element deleted from
+the set is the one most recently inserted: the stack implements a last-in,
+first-out, or LIFO, policy. 
+-r
+Similarly, in a queue, the element deleted is always the one that
+has been in the set for the longest time: the queue implements a first-in,
+first-out, or FIFO, policy.
+-l
+-n40
+-w+
+-p5
+-s
+There are several efficient ways to implement stacks and queues
+ on a computer.
+-n80
+-e
+-w-
+In this section we show how to use a simple array to implement
+evenly spaced
+evenly spaced text test
+and one very long line that is very long so long it is more than eighty characters oh so long
+each.
+-a2
+We hold these truths to be self-evident, that all men are created equal, that they are endowed by their 
+Creator with certain unalienable Rights, that among these are 
+Life, 
+Liberty 
+and the pursuit of Happiness.
+-w+
+We hold these truths to be self-evident, that all men are created equal, that they are endowed by their 
+Creator with certain unalienable Rights, that among these are 
+Life, 
+Liberty 
+and the pursuit of Happiness.
