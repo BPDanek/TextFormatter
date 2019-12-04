@@ -1,5 +1,6 @@
 package formatterGui;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -34,14 +35,14 @@ public class GUI {
 	
 			public void run() {
 				
-				String filePath = " "; //"/Users/denbanek/eclipse-workspace/FormattingTool/src/formatterGui/testfile3.txt"
+				String filePath = ""; //"/Users/denbanek/eclipse-workspace/FormattingTool/src/formatterGui/testfile3.txt"
 				
 				JFrame frame = new MainFrame("Formatter", filePath); // open a frame with a title in constructor
 				
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // terminate program when window is closed
-//				frame.pack();
+				frame.pack();
 				
-				frame.setSize(651, 500); // set size
+//				frame.setPreferredSize(new Dimension(651, 500)); // set size
 				frame.setVisible(true); // show frame
 							
 			}
